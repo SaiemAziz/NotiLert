@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using MimeKit;
 using NotiLert.Data;
 using NotiLert.DTOs;
+using NotiLert.Services;
 
 namespace NotiLert.Controllers;
 
@@ -11,13 +12,13 @@ namespace NotiLert.Controllers;
 [Route("api/[controller]")]
 public class NotificationController : ControllerBase
 {
+    private readonly IEmailService _emailService;
     private readonly AppDbContext _context;
-    private readonly IConfiguration _config;
 
-    public NotificationController(AppDbContext context, IConfiguration config)
+    public NotificationController(AppDbContext context, IEmailService emailService)
     {
         _context = context;
-        _config = config;
+        _emailService = emailService;
     }
 
     [HttpPost("send-broadcast")]
@@ -35,29 +36,8 @@ public class NotificationController : ControllerBase
         if (!emails.Any())
             return NotFound("No active recipients found.");
 
-        foreach (var email in emails)
-        {
-            await SendEmailAsync(email, request.Subject, request.Message);
-        }
+        await _emailService.SendEmailAsync(emails, request.Subject, request.Message);
 
         return Ok(new { Count = emails.Count, Status = "Sent successfully." });
-    }
-
-    private async Task SendEmailAsync(string toEmail, string subject, string body)
-    {
-        var message = new MimeMessage();
-        message.From.Add(MailboxAddress.Parse(_config["Smtp:FromAddress"]));
-        message.To.Add(MailboxAddress.Parse(toEmail));
-        message.Subject = subject;
-        message.Body = new TextPart("plain") { Text = body };
-
-        using var client = new SmtpClient();
-        await client.ConnectAsync(_config["Smtp:Host"], int.Parse(_config["Smtp:Port"]));
-
-        if (!string.IsNullOrEmpty(_config["Smtp:Username"]))
-            await client.AuthenticateAsync(_config["Smtp:Username"], _config["Smtp:Password"]);
-
-        await client.SendAsync(message);
-        await client.DisconnectAsync(true);
     }
 }
