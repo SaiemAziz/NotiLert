@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using NotiLert.Data;
+using NotiLert.Middlewares;
 using NotiLert.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 // 2. REGISTER YOUR SERVICES HERE
 builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<INotificationService, NotificationService>();
 
 var app = builder.Build();
 
@@ -27,6 +29,8 @@ if (app.Environment.IsDevelopment())
         options.SwaggerEndpoint("/openapi/v1.json", "v1");
     });
 }
+
+app.UseMiddleware<ExceptionsMiddleware>();
 
 app.UseHttpsRedirection();
 

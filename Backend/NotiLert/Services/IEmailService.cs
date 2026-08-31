@@ -1,7 +1,7 @@
-﻿namespace NotiLert.Services
+namespace NotiLert.Services
 {
     public interface IEmailService
     {
-        Task SendEmailAsync(List<string> emails, string subject, string body);
+        Task SendEmailAsync(IReadOnlyList<string> to, string subject, string body);
     }
 }

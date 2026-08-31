@@ -1,8 +1,4 @@
-﻿using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using MimeKit;
-using NotiLert.Data;
 using NotiLert.DTOs;
 using NotiLert.Services;
 
@@ -12,32 +8,24 @@ namespace NotiLert.Controllers;
 [Route("api/[controller]")]
 public class NotificationController : ControllerBase
 {
-    private readonly IEmailService _emailService;
-    private readonly AppDbContext _context;
+    private readonly INotificationService _notificationService;
 
-    public NotificationController(AppDbContext context, IEmailService emailService)
+    public NotificationController(INotificationService notificationService)
     {
-        _context = context;
-        _emailService = emailService;
+        _notificationService = notificationService;
     }
 
-    [HttpPost("send-broadcast")]
+    [HttpPost("send-email-broadcast")]
     public async Task<IActionResult> SendBroadcast([FromBody] SendNotificationRequest request)
     {
         if (string.IsNullOrWhiteSpace(request.Message))
             return BadRequest("Message content cannot be empty.");
 
-        var emails = await _context.EmailRecipients
-            .Where(u => u.IsActive)
-            .Select(u => u.Email)
-            .Distinct()
-            .ToListAsync();
+        int sentCount = await _notificationService.BroadcastAsync(request.Subject, request.Message);
 
-        if (!emails.Any())
+        if (sentCount == 0)
             return NotFound("No active recipients found.");
 
-        await _emailService.SendEmailAsync(emails, request.Subject, request.Message);
-
-        return Ok(new { Count = emails.Count, Status = "Sent successfully." });
+        return Ok(new { Count = sentCount, Status = "Sent successfully." });
     }
 }
