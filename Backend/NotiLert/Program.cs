@@ -30,6 +30,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+app.UseMiddleware<LoggingMiddleware>();
 app.UseMiddleware<ExceptionsMiddleware>();
 
 app.UseHttpsRedirection();

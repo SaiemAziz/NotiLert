@@ -6,6 +6,21 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project uses incremental micro-versioning — each version is one
 self-contained concept, sized to a single 1–2 hour session.
 
+## [v0.3] — 2026-08-31
+
+### Added
+- `LoggingMiddleware` — logs method, path, status code and elapsed time for every request.
+  - Registered **outermost**, ahead of `ExceptionsMiddleware`, so requests that throw downstream
+    are still recorded with their final status rather than vanishing as the exception unwinds.
+  - `try/finally` guarantees a log line even on the rethrow path.
+  - Timing via `Stopwatch.GetTimestamp()` / `GetElapsedTime()` — no per-request heap allocation.
+  - Log level derived from status: 5xx `Error`, 4xx `Warning`, otherwise `Information`.
+  - Skips `/openapi` and `/swagger` to keep the development console readable.
+
+### Added (project)
+- `CLAUDE.md` — working agreement and project context: developer goals, incremental
+  micro-versioning strategy, staged roadmap, and the current-state / known-debt register.
+
 ## [v0.2] — 2026-08-31
 
 ### Added
@@ -35,5 +50,6 @@ self-contained concept, sized to a single 1–2 hour session.
 - `IEmailService` / `EmailService` extracted from the controller; one SMTP connection reused
   across all recipients, with a configurable delay between sends.
 
+[v0.3]: https://github.com/SaiemAziz/NotiLert/releases/tag/v0.3
 [v0.2]: https://github.com/SaiemAziz/NotiLert/releases/tag/v0.2
 [v0.1]: https://github.com/SaiemAziz/NotiLert/releases/tag/v0.1
