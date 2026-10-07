@@ -16,8 +16,8 @@ Set up the solution with `Domain`, `Application`, `Infrastructure`, and `Api` la
 - None (this is the first version).
 
 ## Sub-Steps (check off as you commit)
-- [ ] 1. Create the solution and four projects: `NotiLert.Domain`, `NotiLert.Application`, `NotiLert.Infrastructure`, `NotiLert.Api`
-- [ ] 2. Wire project references: `Api` -> `Application` -> `Domain`; `Infrastructure` -> `Application`
+- [x] 1. Create the solution and four projects: `NotiLert.Domain`, `NotiLert.Application`, `NotiLert.Infrastructure`, `NotiLert.Api`
+- [x] 2. Wire project references: `Api` -> `Application` -> `Domain`; `Infrastructure` -> `Application`
 - [ ] 3. Register dependency injection in `Program.cs` (empty service registrations for now, just the wiring pattern)
 - [ ] 4. Add a `/health` minimal API endpoint returning 200 OK
 - [ ] 5. Confirm the solution builds and no layer references outward incorrectly

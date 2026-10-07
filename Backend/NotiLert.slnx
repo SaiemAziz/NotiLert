@@ -1,3 +1,6 @@
 <Solution>
-  <Project Path="NotiLert/NotiLert.csproj" />
+  <Project Path="NotiLert.Api/NotiLert.Api.csproj" />
+  <Project Path="NotiLert.Application/NotiLert.Application.csproj" />
+  <Project Path="NotiLert.Domain/NotiLert.Domain.csproj" />
+  <Project Path="NotiLert.Infrastructure/NotiLert.Infrastructure.csproj" />
 </Solution>
