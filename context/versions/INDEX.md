@@ -2,7 +2,7 @@
 
 | Version | Title | Roadmap Steps | Status | Completed |
 |---|---|---|---|---|
-| v01 | Clean Architecture Skeleton | [01] | not-started | |
+| v01 | Clean Architecture Skeleton | [01] | complete | 2026-10-08 |
 | v02 | PostgreSQL + EF Core + Docker | [02] | not-started | |
 | v03 | Config & Secrets Management | [03] | not-started | |
 | v04 | In-Memory Queue & Background Worker | [04] | not-started | |

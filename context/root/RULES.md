@@ -63,7 +63,9 @@ The primary goal of this repository is ensuring the developer deeply learns the 
 1. Confirm every sub-step in `00-plan.md` and every item in `01-manual-steps.md` is checked.
 2. Confirm the plan's Validation criteria are all satisfied.
 3. Generate `02-outcome.md`: what was built, deviations from plan + why, theory/code concepts actually applied, alternatives considered, and the **Context Handoff** section for the next version.
-4. Generate `03-interview-prep.md`: likely questions + short answers + alternative approaches, derived from `02-outcome.md`.
+4. Generate `03-interview-prep.md`:
+   - Likely architecture and implementation questions + short answers + alternative approaches, derived from `02-outcome.md`.
+   - **Capture Real Session Confusions**: Actively review the session dialogue from this version. Identify genuine conceptual confusions, doubts, and trade-offs discussed with the developer (e.g. language mechanics, compiler behaviors, dependency flow, architectural trade-offs). Translate these into generalized, high-yield interview questions and concise answers.
 5. Generate `04-release-notes.md`: GitHub-ready release description.
 6. Update `versions/INDEX.md` — mark this version complete, fill in the completion date.
 7. Update `CURRENT.md` to point at the next version.
