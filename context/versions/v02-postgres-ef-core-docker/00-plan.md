@@ -17,7 +17,7 @@ Add the first `Notification` entity, EF Core migrations, and a Dockerized Postgr
 
 ## Sub-Steps (check off as you commit)
 - [x] 1. Define `Notification` entity in `Domain`
-- [ ] 2. Add `NotiLertDbContext` in `Infrastructure` with EF Core + Npgsql
+- [x] 2. Add `NotiLertDbContext` in `Infrastructure` with EF Core + Npgsql
 - [ ] 3. Write `docker-compose.yml` with a `postgres` service
 - [ ] 4. Create the initial EF Core migration
 - [ ] 5. Apply the migration against the Dockerized DB
