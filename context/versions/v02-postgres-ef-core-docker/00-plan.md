@@ -2,9 +2,9 @@
 version: v02
 title: PostgreSQL + EF Core + Docker
 roadmap_steps: [02]
-status: in-progress
+status: complete
 started: 2026-10-29
-completed: 
+completed: 2026-10-29
 ---
 
 # v02: PostgreSQL + EF Core + Docker
@@ -21,7 +21,7 @@ Add the first `Notification` entity, EF Core migrations, and a Dockerized Postgr
 - [x] 3. Write `docker-compose.yml` with a `postgres` service
 - [x] 4. Create the initial EF Core migration
 - [x] 5. Apply the migration against the Dockerized DB
-- [ ] 6. Add a minimal endpoint to insert/query a Notification, confirm round-trip
+- [x] 6. Add a minimal endpoint to insert/query a Notification, confirm round-trip
 
 ## Theory to Know Going In
 - ORM fundamentals (EF Core, Code-First)
@@ -31,4 +31,4 @@ Add the first `Notification` entity, EF Core migrations, and a Dockerized Postgr
 ## Validation (from roadmap, copied in full)
 - [x] `docker-compose up` boots Postgres successfully
 - [x] `dotnet ef database update` applies the migration cleanly
-- [ ] Can insert and query a Notification via the API
+- [x] Can insert and query a Notification via the API

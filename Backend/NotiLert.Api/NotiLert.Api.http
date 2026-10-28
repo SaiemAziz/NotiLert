@@ -1,6 +1,23 @@
 @NotiLert.Api_HostAddress = http://localhost:5240
 
-GET {{NotiLert.Api_HostAddress}}/weatherforecast/
+GET {{NotiLert.Api_HostAddress}}/health
+Accept: application/json
+
+###
+
+POST {{NotiLert.Api_HostAddress}}/api/notifications
+Content-Type: application/json
+
+{
+  "recipient": "user@example.com",
+  "subject": "Welcome to NotiLert",
+  "body": "Your account has been successfully configured.",
+  "channel": 1
+}
+
+###
+
+GET {{NotiLert.Api_HostAddress}}/api/notifications
 Accept: application/json
 
 ###
