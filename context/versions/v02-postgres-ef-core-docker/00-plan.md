@@ -20,7 +20,7 @@ Add the first `Notification` entity, EF Core migrations, and a Dockerized Postgr
 - [x] 2. Add `NotiLertDbContext` in `Infrastructure` with EF Core + Npgsql
 - [x] 3. Write `docker-compose.yml` with a `postgres` service
 - [x] 4. Create the initial EF Core migration
-- [ ] 5. Apply the migration against the Dockerized DB
+- [x] 5. Apply the migration against the Dockerized DB
 - [ ] 6. Add a minimal endpoint to insert/query a Notification, confirm round-trip
 
 ## Theory to Know Going In
@@ -29,6 +29,6 @@ Add the first `Notification` entity, EF Core migrations, and a Dockerized Postgr
 - Containerized dev parity (why Docker for local Postgres instead of a local install)
 
 ## Validation (from roadmap, copied in full)
-- [ ] `docker-compose up` boots Postgres successfully
-- [ ] `dotnet ef database update` applies the migration cleanly
+- [x] `docker-compose up` boots Postgres successfully
+- [x] `dotnet ef database update` applies the migration cleanly
 - [ ] Can insert and query a Notification via the API
