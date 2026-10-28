@@ -2,8 +2,8 @@
 version: v02
 title: PostgreSQL + EF Core + Docker
 roadmap_steps: [02]
-status: not-started
-started: 
+status: in-progress
+started: 2026-10-29
 completed: 
 ---
 
@@ -16,7 +16,7 @@ Add the first `Notification` entity, EF Core migrations, and a Dockerized Postgr
 - Clean Architecture layers exist (`Domain`/`Application`/`Infrastructure`/`Api`).
 
 ## Sub-Steps (check off as you commit)
-- [ ] 1. Define `Notification` entity in `Domain`
+- [x] 1. Define `Notification` entity in `Domain`
 - [ ] 2. Add `NotiLertDbContext` in `Infrastructure` with EF Core + Npgsql
 - [ ] 3. Write `docker-compose.yml` with a `postgres` service
 - [ ] 4. Create the initial EF Core migration
